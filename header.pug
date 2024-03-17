@@ -1,0 +1,12 @@
+include mixins.pug
+-var menu_items_number= 0;
+- var menu_items = ['Home', 'Menu', 'Events','About us']
+header(class="header" id=`${menu_items[menu_items_number]}`)
+  div(class="header__container").container
+    a.header__logo(href='#' id='header__logo').logo pizzashop
+    nav(class='header__menu menu menu-burger-content' id='menu-burger-content')
+      ul(class='menu__list' id='menu__list')
+        each index in menu_items
+          li.menu__item
+            a.menu__link(href=`#${index}`)= index
+    +linkButton('header__login', 'Log in', '#', '_blank')

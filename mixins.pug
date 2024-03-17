@@ -1,0 +1,21 @@
+mixin img(src,format,alt)
+  if format!== 'svg'
+    picture
+      source(srcset=`assets/img/${src}.webp` type="image/webp")
+      if alt!==" "
+        img(src=`assets/img/${src}.${format}` alt=`${alt}` title=`${alt}` loading="lazy" tabindex="0")
+      else
+        img(src=`assets/img/${src}.${format}` alt=" " title=" " loading="lazy")
+  else
+    if alt!==" "
+      img(src=`assets/img/${src}.${format}` alt=`${alt}` title=`${alt}` loading="lazy" tabindex="0")
+    else
+      img(src=`assets/img/${src}.${format}` alt=" " title=" " loading="lazy")
+mixin linkButton(className,caption,link,target)
+  form(action=`${link}`) 
+    button(class=`${className}` target=`${target}`)= caption
+mixin actionButton(className,caption,id)
+  if id !== ' '
+    button(class=`${className}` id= id)= caption
+  else
+    button(class=`${className}`)= caption

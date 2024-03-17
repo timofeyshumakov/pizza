@@ -1,0 +1,121 @@
+include mixins.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset='UTF-8')
+    //meta(name='viewport' content="1440px")
+    meta(name='format-detection' content="telephone=yes")
+    meta(name="robots" content="all")
+    meta(name="keywords" content="ключевые слова")
+    meta(name="description" content="Описание страницы сайта.")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='icon' type='image/x-icon' href='img/logo/logo.png')
+    script(src='js/script.js')
+    title NFT Marketplace
+    link(href="https://fonts.googleapis.com/css?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css?family=Oxanium:wght@400;500;600&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='assets/css/reset.css')
+    link(rel='stylesheet' href='assets/css/style.css')
+    link(rel='stylesheet' href='assets/css/fonts.css')
+  body
+    -var section_number= 0;
+    -var section_name= ['header','main-block','menu','events','about']
+    -var block_title= ['','Explore, Buy and Sell the Best NFTs!','','Live Auctions','How it works','Popular Collections','Explore By Categories','Top Creators','Ready for Next NFT Drop?','','Ready for Next NFT Drop?']
+    .wrapper
+      include header.pug
+      main.page
+        -section_number++
+        section(class=`page__${section_name[section_number]}`)(class=`${section_name[section_number]}`)
+          div(class=`${section_name[section_number]}__container`).container
+            .left
+              h1 The Fastest Pizza<span><img src="assets/img/main-screen/lightning.svg"></span> Delivery
+              .content
+                .text We will deliver juicy pizza for your family in 30 minutes, if the courier is late - pizza is free!
+                .figure
+                  .figure-title Cooking process:
+                  +img('main-screen/cooking-process','jpg','cooking process')
+              .buttons
+                +linkButton(`${section_name[section_number]}__` + 'button', 'To order', '#', '_blank')
+                +linkButton(`${section_name[section_number]}__` + 'button', 'Pizza-Menu', '#', '_blank')
+            .right
+              .main-img
+                +img('main-screen/main-img','jpg','pizza with sauces')
+                +img('common/fries','png','fries')
+                +img('common/pizza','png','pizza')
+            .decor-container
+              .decor-txt Pizza
+              .decor-txt Pizza
+              .decor-txt Pizza
+        -section_number++
+        -menu_items_number++
+        section(class=`page__${section_name[section_number]}` id=`${menu_items[menu_items_number]}`)(class=`${section_name[section_number]}`)
+          div(class=`${section_name[section_number]}__container`).container
+            h2 Menu
+            .buttons
+              -var buttons = ['Show All','Meat','Vegetarian','Sea products','Mushroom']
+              each button in buttons
+                +actionButton(`${section_name[section_number]}__` + 'button', button, ' ')
+            .cards
+              each item in [ {name: 'Italian', desc : 'Filling: onion, potato, tomato, mushrooms, cheese, olives, meat...', sizes : [22,28,33], prices: [8,8,8]},{name: 'Italian', desc : 'Filling: onion, potato, tomato, mushrooms, cheese, olives, meat...', sizes : [22,28,33], prices: [8,8,8]}]
+                article(class=`${section_name[section_number]}__` + 'card')
+                  +img('menu/'+`${item.name}`,'png',`${item.name} pizza`)
+                  h3(class=`${section_name[section_number]}__` + 'title')= item.name
+                  div(class=`${section_name[section_number]}__` + 'desc')
+                  div(class=`${section_name[section_number]}__` + 'options')
+                    each size in item.sizes
+                      div(class=`${section_name[section_number]}__` + 'option')= size
+                  button(class=`${section_name[section_number]}__` + 'button') + Ingridientss
+                  .cost-calculator
+                    .count
+                      +img('common/decreace','png','decreace')
+                    .cost= item.prices[0]
+                    .count
+                      +img('common/increace','png','increace')
+            +img('menu/main-img','jpg','pizza')
+                  +linkButton(`${section_name[section_number]}__` + 'order', 'Order Now', '#', '_blank')
+            .cards
+        -section_number++
+        -menu_items_number++
+        section(class=`page__${section_name[section_number]}` id=`${menu_items[menu_items_number]}`)(class=`${section_name[section_number]}`)
+          div(class=`${section_name[section_number]}__container`).container
+            .row
+              .card
+              .card
+              .title
+                h2 Events
+                .sub-title There are regular events in our pizzeria that will allow you to eat delicious food for a lower price!
+            .row
+              .card
+                .title
+                .button
+                .img
+              .card
+            .row
+              .card
+              .card
+              .card
+            .decors
+              .img
+              .img
+              .img
+        -section_number++
+        -menu_items_number++
+        section(class=`page__${section_name[section_number]}` id=`${menu_items[menu_items_number]}`)(class=`${section_name[section_number]}`)
+          div(class=`${section_name[section_number]}__container`).container
+            .left
+              h2 About us
+              .txt In just a couple of years, we have opened 6 outlets in different cities: Kazan, Chelyabinsk, Ufa, Samara, Izhevsk, and in the future we plan to develop the network in other major cities of Russia.
+              .group
+                img
+                img
+                img
+                img
+                img
+              .txt The kitchen of each point is at least: 400-500 sq. m. meters, hundreds of employees, smoothly performing work in order to receive / prepare / form / deliver customer orders on time.
+            .right
+              img
+              img
+              img
+            .decor About
+            .decor About
+      include footer.pug

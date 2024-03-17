@@ -1,0 +1,66 @@
+
+@function r($value) 
+    $remValue: calc($value / 16) + rem
+    @return $remValue
+
+$mw: 1600
+@function vw($value) 
+    $vw: calc(1/($mw/$value)*100) + vw
+    @return $vw
+@function lh($value, $lhp) 
+    $lh: #{round(calc(($lhp/$value)*100))}+'%'
+    @return $lh
+@function c($min, $max)
+    @return #{'clamp('+r($min),vw($max),r($max)+')'}
+$w50: 50%
+$w100: 100%
+$fs1: 14px
+$fs2: 16px
+$fs3: 18px
+$fs4: 20px
+$fs5: 24px
+$fs6: 28px
+$fs7: 30px
+$fs8: 32px
+$fs9: 36px
+$fs10: 62px
+$fs11: 64px
+$fs12: 85px
+
+$fc1: #F5FBF2
+$fc2: #A48EA9
+$fc3: #C6BFC8
+$fc4: #BDAAC1
+$fc5: #594D5E
+$fc6: #76607A
+$fc7: #96839B
+$fc8: #FFCE4E
+$fc9: #000000
+$fc10: #C2B5C6
+$fc11: #FFFFFF
+$fc12: #908294
+$fc13: #E4DEE7
+$fc14: #16091B
+$fc15: #302034
+$fc16: #49374E
+$nobg: rgba(0,0,0,0)
+
+
+$lh1: 115%
+$lh2: 130%
+$lh3: 180%
+$lh4: 150%
+$lh5: 200%
+$lh6: 260%
+
+$font1: 600 $fs5 Work Sans
+$font2: 500 c(16,24) Work Sans
+$ff1: Work Sans, sans-serif
+$ff2: Oxanium, cursive
+$logo: 900 $fs4 Work Sans
+$font_smallest: 700 $fs1 Work Sans
+$font_main: 400 $fs2 Work Sans
+$font_big: 700 $fs3 Work Sans
+
+$bp_def: 40px 0
+
